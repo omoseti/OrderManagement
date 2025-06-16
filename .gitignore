@@ -1,0 +1,36 @@
+# Visual Studio user-specific files
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+# NuGet packages (optional if you use package restore)
+packages/
+*.nupkg
+
+# Rider
+.idea/
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Visual Studio Code workspace
+.vscode/
+
+# Others
+*.dbmdl
+*.bak
+*.log
+*.tmp
+*.temp
+*.cache
+
+# OS generated files
+.DS_Store
+Thumbs.db
