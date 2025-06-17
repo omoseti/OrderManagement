@@ -36,9 +36,9 @@ namespace OrderManagement.Tests.Services
         }
 
         [Theory]
-        [InlineData(CustomerSegment.VIP, 1000, 100)]  // 10% -> $100
-        [InlineData(CustomerSegment.VIP, 5000, 750)] // 15% -> $750
-        [InlineData(CustomerSegment.Wholesale, 500, 25)] // 5% -> $25
+        [InlineData(CustomerSegment.VIP, 1000, 100)]  // 10% -> KES 100
+        [InlineData(CustomerSegment.VIP, 5000, 750)] // 15% -> KES 750
+        [InlineData(CustomerSegment.Wholesale, 500, 25)] // 5% -> KES 25
         public void CalculateDiscountAmount_ReturnsExpectedAmount(CustomerSegment segment, decimal amount, decimal expectedAmount)
         {
             var customer = new Customer { Segment = segment };

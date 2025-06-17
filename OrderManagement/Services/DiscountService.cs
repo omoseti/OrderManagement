@@ -4,6 +4,12 @@ namespace OrderManagement.Services
 {
     public class DiscountService : IDiscountService
     {
+        /// <summary>
+        /// Returns the discount rate as a decimal, e.g. 0.10 for 10%.
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public decimal CalculateDiscountRate(Customer customer, Order order)
         {
             decimal rate = 0m;
