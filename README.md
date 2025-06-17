@@ -1,5 +1,4 @@
-# OrderManagement
-📦 Order Management System API  
+# 📦 OrderManagement  
 This is a sample .NET 8 Web API for managing orders, customers, and discounts. It demonstrates clean architecture, proper design patterns, and robust testing.  
 ________________________________________  
 ✅ Discounting System  
