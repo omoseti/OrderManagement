@@ -31,16 +31,7 @@ ________________________________________
 •	Service Layer (OrderService, DiscountService)  
 •	Dependency Injection (configured in Program.cs)  
 •	DTOs (API models separate from entities)  
-________________________________________  
-⚡ Run the Project  
-git clone https://github.com/yourusername/order-management-system.git  
-cd order-management-system  
-dotnet run  
-Access Swagger UI at http://localhost:{port}/swagger  
-________________________________________  
-✅ Run Tests  
-dotnet test  
-________________________________________  
+________________________________________   
 📬 Author  
 Onsongo Moseti  
 [GitHub](https://github.com/omoseti) | [LinkedIn](www.linkedin.com/in/onsongo-moseti-73046010)  
