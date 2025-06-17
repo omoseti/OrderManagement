@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using OrderManagement.Data;
 using OrderManagement.Models;
 using OrderManagement.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+    options.IncludeXmlComments(xmlPath);
+});
 
 //custom services
 
@@ -57,5 +65,6 @@ app.MapControllers();
 app.Run();
 
 namespace OrderManagement
-{    public partial class Program { }
+{   
+    public partial class Program { }
 }

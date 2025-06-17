@@ -9,7 +9,7 @@ obj/
 [Bb]uild/
 [Bb]uild[Ll]og.*
 
-# NuGet packages (optional if you use package restore)
+# NuGet packages
 packages/
 *.nupkg
 

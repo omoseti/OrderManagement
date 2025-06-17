@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using OrderManagement.Data;
 using OrderManagement.DTOs;
 using OrderManagement.Models;
 
 namespace OrderManagement.Services
 {
-    public class OrderService:IOrderService
+    public class OrderService : IOrderService
     {
         private readonly AppDbContext _context;
         private readonly IDiscountService _discountService;
@@ -36,6 +37,7 @@ namespace OrderManagement.Services
             return order;
         }
 
+
         public async Task<bool> UpdateStatusAsync(int orderId, OrderStatus newStatus)
         {
             var order = await _context.Orders.FindAsync(orderId);
@@ -56,13 +58,36 @@ namespace OrderManagement.Services
             return true;
         }
 
+
+        public async Task<Order> FulfillOrderAsync(int orderId)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null) throw new Exception("Order not found.");
+
+            if (order.Status != OrderStatus.Pending)
+                throw new Exception("Only pending orders can be fulfilled.");
+
+            order.Status = OrderStatus.Fulfilled;
+            order.FulfilledAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+            return order;
+        }
+
+
+
+
         public async Task<OrderAnalyticsDto> GetAnalyticsAsync()
         {
             var fulfilledOrders = await _context.Orders
-                .Where(o => o.FulfilledAt.HasValue)
-                .ToListAsync();
+                 .AsNoTracking() // Use AsNoTracking for read-only queries
+                 .Where(o => o.FulfilledAt.HasValue)
+                 .ToListAsync();
 
-            var averageValue = await _context.Orders.AverageAsync(o => o.TotalAmount);
+            var averageValue = await _context.Orders
+                 .AsNoTracking() // Use AsNoTracking for read-only queries
+                 .AverageAsync(o => o.TotalAmount);
+
 
             double averageTime = 0;
             if (fulfilledOrders.Any())

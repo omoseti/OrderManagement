@@ -6,6 +6,7 @@
         Confirmed,
         Shipped,
         Delivered,
+        Fulfilled,
         Cancelled
     }
 }

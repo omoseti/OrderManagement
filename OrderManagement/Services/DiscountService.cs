@@ -4,35 +4,35 @@ namespace OrderManagement.Services
 {
     public class DiscountService : IDiscountService
     {
-        /// <summary>
-        /// Returns the discount rate as a decimal fraction. E.g. 0.10 means 10% off.
-        /// </summary>
         public decimal CalculateDiscountRate(Customer customer, Order order)
         {
             decimal rate = 0m;
 
             if (customer.Segment == CustomerSegment.VIP)
             {
-                rate += 0.10m; // 10% for VIP
+                rate += 0.10m; // VIP = +10%
             }
             else if (customer.Segment == CustomerSegment.Wholesale)
             {
-                rate += 0.05m; // 5% for Wholesale
+                rate += 0.05m; // Wholesale = +5%
             }
 
             if (order.TotalAmount > 1000)
             {
-                rate += 0.05m; // Extra 5% for big spenders
+                rate += 0.05m; // Everyone gets +5% for big orders
             }
 
-            // Cap at 20%
             if (rate > 0.20m) rate = 0.20m;
 
             return rate;
         }
 
+
+
+
+
         /// <summary>
-        /// Returns the discount amount in money, e.g. $200.
+        /// Returns the discount amount in money, e.g. KES 200.
         /// </summary>
         public decimal CalculateDiscountAmount(Customer customer, Order order)
         {

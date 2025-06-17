@@ -8,5 +8,6 @@ namespace OrderManagement.Services
         Task<Order> CreateOrderAsync(Order order);
         Task<bool> UpdateStatusAsync(int orderId, OrderStatus newStatus);
         Task<OrderAnalyticsDto> GetAnalyticsAsync();
+        Task<Order> FulfillOrderAsync(int orderId);
     }
 }
