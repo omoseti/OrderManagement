@@ -33,8 +33,7 @@ ________________________________________
 •	DTOs (API models separate from entities)  
 ________________________________________   
 📬 Author  
-Onsongo Moseti  
-[GitHub](https://github.com/omoseti) | [LinkedIn](www.linkedin.com/in/onsongo-moseti-73046010)  
+Onsongo Moseti    
 ________________________________________  
 📜 License  
 Open-source for learning and demonstration.  
